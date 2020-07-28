@@ -61,8 +61,11 @@ class Plex {
                 reject("No Plex token provided. Please use the SignIn method or provide a X-Plex-Token in the Plex constructor.")
             else
                 request(req, (err, res) => {
-                    if (err || res.statusCode !== 200)
+                    if (err || res.statusCode !== 200) {
+                        console.error(err);
+                        console.log(res.statusCode);
                         reject(`Plex 'Get' request failed. URL: ${this.URL}${path}`)
+                    }
                     else
                         resolve(JSON.parse(res.body).MediaContainer)
                 })
