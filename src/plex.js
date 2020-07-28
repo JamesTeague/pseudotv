@@ -62,8 +62,6 @@ class Plex {
             else
                 request(req, (err, res) => {
                     if (err || res.statusCode !== 200) {
-                        console.error(err);
-                        console.log(res.statusCode);
                         reject(`Plex 'Get' request failed. URL: ${this.URL}${path}`)
                     }
                     else
